@@ -19,7 +19,8 @@ string narytree::getcompanyname(){
 int narytree::getnumberofbranches(){
     return CEOS.size();
 }
-void narytree::addCEO(string CEOname){
+void narytree::addmanager(string CEOname){
+
     if(CEOname.empty()){
         cout<<"Nothing Entered. Please Enter a CEO Name"<<endl;
     }
@@ -44,42 +45,23 @@ void narytree::printCEOS(){
 
 
 
-void narytree::addemployee(string name,int branch){
+void narytree::addemployee(){
+    string name;
+    cout << "Enter a new employee's name:" << endl;
+    cin.ignore();
+    getline(cin,name);
     if(CEOS.size()==0){
         cout<< "There are no CEOS in the company. Would you like to make "<< name <<" a CEO? (Y/N)"<<endl;
         string choice;
-        cin.ignore();
         cin >> choice;
         if(choice == "Y"){
-            addCEO(name);
+            addmanager(name);
         }
     }
     else{
-        string LIST;
-        vector<string> Hierarchy;
-        cout << "Write out the hierarchy for delimited by"<< '>' <<endl;
-        getline(cin,LIST);
-        istringstream ss(LIST);
-        string token;
-        while(getline(ss,token,'>')){
-            Hierarchy.push_back(token);
-        }
-        node *walker;
-        for(int j=0; j<CEOS.size();j++){
-            if(CEOS[j]->name==Hierarchy.front()){
-                walker=CEOS[j];
-                break;
-            }
-        }
-        for(int i=1; i<Hierarchy.size();i++){
-            for(int k=0; k < walker->subordinates.size(); k++){
-                if(walker->subordinates[k]->name==Hierarchy[i]){
-                    break;
-                }
-            }
-
-        }
-
+        cout << "Which branch does "<< name << " work for?"<<endl;
+        int branch;
+        cin >> branch;
     }
 
 }

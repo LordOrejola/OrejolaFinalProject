@@ -18,10 +18,21 @@ void printMenuAndGetInput(int &userinput,narytree input)
 	cin >> userinput;
 }
 
+
+
 void namethecompany(narytree &input){
-    cout << "Hello User!"<<endl;
+    cout << "===========Hello User!============" <<endl;
+    cout << "====Welcome to Company Branches===" <<endl;
+    cout << "==================================" <<endl;
+    cout << "        By Oliver Orejola         " <<endl;
+    cout << "            CSCI 2270             " <<endl;
+    cout << " " <<endl;
+    cout << "Press Enter to continue ";
+    cin.ignore();
+    cout << " " <<endl;
     cout << "What would you like to name the company?" <<endl;
     string newname;
+
     getline(cin,newname);
     input.namecompany(newname);
     cout << "Congratulations! You have named the company "<< input.getcompanyname()<<"!"<<endl;
@@ -32,7 +43,6 @@ int main()
     int input;
     narytree tree;
     namethecompany(tree);
-    cout <<tree.getcompanyname()<<endl;
     while(input!=100){
         printMenuAndGetInput(input,tree);
         if(input==1){
@@ -40,19 +50,15 @@ int main()
             cin.ignore();
             cout << "Enter the Branch Manager's name:" << endl;
             getline(cin,CEOname);
-            tree.addCEO(CEOname);
+            tree.addmanager(CEOname);
         }
         else if(input==2){
             tree.printCEOS();
         }
         else if(input==3){
-           /* string Employeename;
-            cout << "Enter a new employee's name:" << endl;
-            cin.ignore();
-            getline(cin,Employeename);
-            tree.addemployee(Employeename);*/
+            tree.addemployee();
         }
-        else if(input == 4){
+       /* else if(input == 4){
             string test;
             cin.ignore();
             getline(cin,test);
@@ -62,7 +68,7 @@ int main()
             cout << token <<endl;
             }
 
-        }
+        }*/
     }
 
     return 0;

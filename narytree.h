@@ -27,9 +27,9 @@ class narytree{
         void namecompany(string name);
         string getcompanyname();
         int getnumberofbranches();
-        void addCEO(string name);
+        void addmanager(string name);
         void printCEOS();
-        void addemployee(string name, int branch);
+        void addemployee();
     protected:
     private:
         int depth;
