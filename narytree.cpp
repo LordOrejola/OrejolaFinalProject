@@ -8,12 +8,23 @@ using namespace std;
 narytree::narytree(){};
 narytree::~narytree(){};
 
+void narytree::namecompany(string name){
+        companyname = name;
+}
+
+string narytree::getcompanyname(){
+    return companyname;
+}
+
+int narytree::getnumberofbranches(){
+    return CEOS.size();
+}
 void narytree::addCEO(string CEOname){
     if(CEOname.empty()){
         cout<<"Nothing Entered. Please Enter a CEO Name"<<endl;
     }
     else{
-        node *newCEO = new node(CEOname);
+        node *newCEO = new node(CEOname,"Manager");
         newCEO->ranking=1;
         CEOS.push_back(newCEO);
     }
@@ -21,19 +32,19 @@ void narytree::addCEO(string CEOname){
 
 void narytree::printCEOS(){
     if(CEOS.size()==0){
-        cout<< "There are no CEOS in the company" <<endl;
+        cout<< "There are no Managers in the company" <<endl;
     }
     else{
-        cout<< "The CEOS are:" <<endl;
+        cout<< "Managers:" <<endl;
         for(int i=0; i<CEOS.size();i++){
-            cout<< CEOS[i]->name <<endl;
+            cout<<"Branch "<<i+1<<": "<< CEOS[i]->name <<endl;
         }
     }
 }
 
 
 
-void narytree::addemployee(string name){
+void narytree::addemployee(string name,int branch){
     if(CEOS.size()==0){
         cout<< "There are no CEOS in the company. Would you like to make "<< name <<" a CEO? (Y/N)"<<endl;
         string choice;

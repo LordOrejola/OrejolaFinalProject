@@ -7,13 +7,15 @@ using namespace std;
 
 struct node{
     string name;
+    string title;
     node *superior = NULL;
     int ranking;
     vector<node* > subordinates;
     node(){};
-    node(string in_name)
+    node(string in_name, string in_title)
     {
         name = in_name;
+        title = in_title;
     };
 
 };
@@ -22,12 +24,16 @@ class narytree{
     public:
         narytree();
         ~narytree();
+        void namecompany(string name);
+        string getcompanyname();
+        int getnumberofbranches();
         void addCEO(string name);
         void printCEOS();
-        void addemployee(string name);
+        void addemployee(string name, int branch);
     protected:
     private:
         int depth;
+        string companyname;
         vector<node* > CEOS;
 
 };
