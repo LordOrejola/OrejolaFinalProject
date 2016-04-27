@@ -30,11 +30,16 @@ class narytree{
         void addmanager(string name);
         void printCEOS();
         void addemployee();
+        void printBranch();
+        void printAllbranches();
     protected:
     private:
+        void printBranch(node *Enode);
+        void printpeople();
         int depth;
         string companyname;
         vector<node* > CEOS;
+        vector<node* > printpp;
 
 };
 #endif // NARYTREE_H_INCLUDED

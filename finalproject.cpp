@@ -13,6 +13,8 @@ void printMenuAndGetInput(int &userinput,narytree input)
 	cout << "   "<<"1. Add Branch Manager" <<endl;
 	cout << "   "<<"2. Print Branch Managers names" << endl;
 	cout << "   "<<"3. Add employee" << endl;
+	cout << "   "<<"4. Print employees for a branch" << endl;
+	cout << "   "<<"5. Print employees for all branches" << endl;
 	cout << "   "<<"100. Quit" << endl;
 
 	cin >> userinput;
@@ -57,6 +59,12 @@ int main()
         }
         else if(input==3){
             tree.addemployee();
+        }
+        else if(input==4){
+            tree.printBranch();
+        }
+        else if(input==5){
+            tree.printAllbranches();
         }
        /* else if(input == 4){
             string test;
