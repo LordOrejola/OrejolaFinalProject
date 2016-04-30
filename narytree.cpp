@@ -95,8 +95,11 @@ void narytree::addemployee(){
                         for(int i = 0; i < searcher->subordinates.size();i++){
                             if(who==searcher->subordinates[i]->name){
                                 searcher=searcher->subordinates[i];
+                                searcher->subordinates.push_back(newEmployee);
+
                             }
                         }
+                        break;
                     }
         }
     }
@@ -157,5 +160,6 @@ void narytree::printAllbranches(){
     for(int i = 0; i < CEOS.size();i++){
         cout<<"===="<< companyname <<" Branch "<<i+1<<"===="<<endl;
         printBranch(CEOS[i]);
+        printpeople();
     }
 }
