@@ -44,7 +44,6 @@ void narytree::printCEOS(){
 }
 
 
-
 void narytree::addemployee(){
     string name;
     cout << "Enter a new employee's name:" << endl;
@@ -96,8 +95,11 @@ void narytree::addemployee(){
                         for(int i = 0; i < searcher->subordinates.size();i++){
                             if(who==searcher->subordinates[i]->name){
                                 searcher=searcher->subordinates[i];
+                                searcher->subordinates.push_back(newEmployee);
+
                             }
                         }
+                        break;
                     }
         }
     }
@@ -106,16 +108,22 @@ void narytree::addemployee(){
 
 void narytree::printBranch(){
     int branch;
-    cout << "Enter the " <<companyname<<" branch."<<endl;
-    cin >> branch;
     //cout <<"Name: "<< CEOS[branch-1]->name <<" Title: "<<CEOS[branch-1]->title<<endl;
-    printBranch(CEOS[branch-1]);
+    if(CEOS.size() != 0) {
+        cout << "Enter the " <<companyname<<" branch."<<endl;
+        cin >> branch;
+        printBranch(CEOS[branch-1]);
+    } else {
+        cout << "Please create a branch first." << endl;
+    }
+
     cout << "---" <<endl;
     printpeople();
     printpp.clear();
 }
 
 void narytree::printBranch(node *Enode){
+
     if(Enode->subordinates.size()==0){
         printpp.push_back(Enode);
        // cout <<"Rank: "<<Enode->ranking<<" Name: "<< Enode->name <<" Title: "<<Enode->title<<endl;
@@ -152,6 +160,6 @@ void narytree::printAllbranches(){
     for(int i = 0; i < CEOS.size();i++){
         cout<<"===="<< companyname <<" Branch "<<i+1<<"===="<<endl;
         printBranch(CEOS[i]);
+        printpeople();
     }
 }
-
